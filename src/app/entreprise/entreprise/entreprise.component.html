@@ -1,0 +1,26 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
+
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+      <!-- <mat-drawer mode="side" opened="true"> -->
+      <app-sidenav1></app-sidenav1>
+    </mat-drawer>
+    <mat-drawer-content>
+  
+<app-navbar1></app-navbar1>
+ <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header> 
+  <div class="container-fluid page">
+
+
+
+
+
+
+       
+  </div>
+
+</mat-drawer-content>
+</mat-drawer-container>

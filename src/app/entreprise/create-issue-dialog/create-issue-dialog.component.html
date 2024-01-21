@@ -1,0 +1,30 @@
+<h1 mat-dialog-title>Create Issue</h1>
+<div mat-dialog-content>
+  <div class="container">
+    <div class="row">
+      <div class="col-4">
+        <label for="status">Status <span><i class="fa fa-circle-info"></i></span></label>
+        <select name="status" class="mb-1 form-select" [(ngModel)]="selectedStatus">
+          <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+        </select>
+      </div>
+      <div class="col-12 mb-3">
+        <label for="summary">Summary</label>
+        <textarea name="summary" cols="30" rows="5" class="form-control" [(ngModel)]="summary"></textarea>
+      </div>
+      <div class="col-6 mb-3">
+        <label for="assignedTo">Assignee</label>
+        <select name="assignedTo" class="mb-1 form-select" [(ngModel)]="selectedAssignee">
+            <option *ngFor="let user of assignedUsers" [value]="user.id">{{ user.name }}</option>
+          </select>
+          
+      </div>
+    </div>
+  </div>
+</div>
+<div mat-dialog-actions>
+  <div>
+    <button mat-button (click)="onCancel()">Cancel</button>
+    <button mat-button color="primary" (click)="onCreate()">Create</button>
+  </div>
+</div>

@@ -1,0 +1,168 @@
+
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-lQrV5Cjt3Ij0ZCPqouHqQkLjj8Kl+QaR5xpxCCiARVHTULb1N/59EXW7POMQ+6a" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+
+
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+      <!-- <mat-drawer mode="side" opened="true"> -->
+      <app-sidenav1></app-sidenav1>
+    </mat-drawer>
+    <mat-drawer-content>
+  
+<app-navbar1></app-navbar1>
+ <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header> 
+  <div class="container-fluid page">
+
+    <div class="container-fluid pt-2">
+        <div class="row mt-3">
+          <div class="col-12">
+            <div class="d-flex">
+              <div>
+                <input type="text" placeholder="Search Here" class="form-control ng-pristine ng-valid ng-touched">
+              </div>
+            </div>
+          </div>
+        </div>
+        <br>
+        <div class="ms-auto float-right">
+          <i class="fas fa-plus-circle" style="font-size: 24px; color: #007BFF; cursor: pointer;" (click)="openCreateIssueDialog()"></i>
+      </div>
+      
+      
+        <br>
+        <div class="row pt-1">
+          <!-- Todo Column -->
+          <div class="col-md-4">
+            <h3><i class="fas fa-tasks"></i> Todo</h3>
+            
+            <div *ngFor="let ticket of todoTickets">
+              <div class="ms-auto">
+                <i class="fas fa-plus-circle" style="font-size: 24px; color: #007BFF; cursor: pointer;" (click)="openCreateIssueDialog()"></i>
+              </div>
+              <div class="card card-bg">
+                <div class="card-header border-0 py-1">
+                  {{ ticket.status }}
+                  <i class="fas fa-info-circle ml-2" data-toggle="tooltip" data-placement="top" title="Additional Information"></i>
+                </div>
+                <div class="card-body ticket-bg border">
+                  <div class="card-Body-Hover m-1 rounded-1 task">
+                    <div class="my-1 fw-bold">  <i class="fas fa-file-alt"></i> {{ ticket.summary }}</div>
+                    <div class="row">
+                      <div class="col-3">
+                        <p class="text-muted space-font m-0 pointer"></p>
+                      </div>
+                      <div class="col-9 text-end">
+                        <h5 class="text-muted space-font m-0"> <i class="fas fa-user"></i>Assigned To: {{ ticket.assignedTo.firstname }} {{ ticket.assignedTo.lastname }}</h5>
+                        <h5 class="text-muted space-font m-0"> <i class="fas fa-user"></i>CreatedBy: {{ ticket.createdBy.firstname }} {{ ticket.createdBy.lastname }}</h5>
+                      </div>
+                    </div>
+                    <div class="col-12 text-end">
+                      <i class="far fa-clock"></i>
+                      <span class="text-muted space-font date-style">{{ ticket.lastUpdated | date: 'medium' }}</span>
+
+                  
+
+                    </div>
+                    
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            
+          </div>
+      
+          <!-- Progress Column -->
+          <div class="col-md-4">
+            <h3><i class="fas fa-spinner"></i> Progress</h3>
+            <div *ngFor="let ticket of inProgressTickets">
+              <div class="ms-auto">
+                <i class="fas fa-plus-circle" style="font-size: 24px; color: #007BFF; cursor: pointer;" (click)="openCreateIssueDialog()"></i>
+              </div>
+              <div class="card card-bg">
+                <div class="card-header border-0 py-1">
+                  {{ ticket.status }}
+                  <i class="fas fa-info-circle ml-2" data-toggle="tooltip" data-placement="top" title="Additional Information"></i>
+                </div>
+                <div class="card-body ticket-bg border">
+                  <div class="card-Body-Hover m-1 rounded-1 task">
+                    <div class="my-1 fw-bold">  <i class="fas fa-file-alt"></i> {{ ticket.summary }}</div>
+                    <div class="row">
+                      <div class="col-3">
+                        <p class="text-muted space-font m-0 pointer"></p>
+                      </div>
+                      <div class="col-9 text-end">
+                        <h5 class="text-muted space-font m-0">  <i class="fas fa-user"></i>Assigned To: {{ ticket.assignedTo.firstname }} {{ ticket.assignedTo.lastname }}</h5>
+                        <h5 class="text-muted space-font m-0"> <i class="fas fa-user"></i>CreatedBy: {{ ticket.createdBy.firstname }} {{ ticket.createdBy.lastname }}</h5>
+                      </div>
+                    </div>
+                    <div class="col-12 text-end">
+                      <i class="far fa-clock"></i>
+                      <span class="text-muted space-font date-style">{{ ticket.lastUpdated | date: 'medium' }}</span>
+                    </div>
+                    
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+      
+          <!-- Done Column -->
+          <div class="col-md-4">
+            <h3><i class="fas fa-check-circle"></i> Done</h3>
+            
+            <div *ngFor="let ticket of doneTickets">
+              <div class="ms-auto">
+                <i class="fas fa-plus-circle" style="font-size: 24px; color: #007BFF; cursor: pointer;" (click)="openCreateIssueDialog()"></i>
+              </div>
+              <div class="card card-bg">
+                <div class="card-header border-0 py-1">
+                  {{ ticket.status }}
+                  <i class="fas fa-info-circle ml-2" data-toggle="tooltip" data-placement="top" title="Additional Information"></i>
+                </div>
+                <div class="card-body ticket-bg border">
+                  <div class="card-Body-Hover m-1 rounded-1 task">
+                    <div class="my-1 fw-bold">  <i class="fas fa-file-alt"></i> {{ ticket.summary }}</div>
+                    <div class="row">
+                      <div class="col-3">
+                        <p class="text-muted space-font m-0 pointer"></p>
+                      </div>
+                      <div class="col-9 text-end">
+                        <h5 class="text-muted space-font m-0">  <i class="fas fa-user"></i> Assigned To: {{ ticket.assignedTo.firstname }} {{ ticket.assignedTo.lastname }}</h5>
+                        <h5 class="text-muted space-font m-0">  <i class="fas fa-user"></i> CreatedBy: {{ ticket.createdBy.firstname }} {{ ticket.createdBy.lastname }}</h5>
+                      </div>
+                    </div>
+                    <div class="col-12 text-end">
+                      <i class="far fa-clock"></i>
+                      <span class="text-muted space-font date-style">{{ ticket.lastUpdated | date: 'medium' }}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+      <div class="container-fluid pt-2 todo-section">
+      
+        <mat-paginator
+          [pageSize]="pageSize"
+          [pageIndex]="currentPage - 1"
+          [pageSizeOptions]="[3, 8, 20]"
+          [length]="tickets.length"
+          (page)="onPageChange($event.pageIndex + 1)"
+        ></mat-paginator>
+      </div>
+      
+
+  </div>  
+</mat-drawer-content>
+</mat-drawer-container>

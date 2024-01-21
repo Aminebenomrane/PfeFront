@@ -1,0 +1,109 @@
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+
+
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+      <!-- <mat-drawer mode="side" opened="true"> -->
+      <app-sidenav1></app-sidenav1>
+    </mat-drawer>
+    <mat-drawer-content>
+  
+<app-navbar1></app-navbar1>
+ <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header> 
+  <div class="container-fluid page">
+
+
+
+
+
+
+  
+
+
+
+    <div class="event">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 ">
+                    <nav class="wow fadeInDown animated" data-animation="fadeInDown animated" data-delay=".2s"
+                    style="visibility: visible; animation-name: fadeInDown;">
+                    <div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
+                        <div class="col-lg-12 justify-content-end text-right">
+                            <div class="ms-auto float-right">
+                                <i class="fas fa-plus-circle" style="font-size: 38px; color: #007BFF; cursor: pointer;" (click)="add()"></i>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </nav>
+                
+                    <div class="tab-content py-3 px-3 px-sm-0 wow fadeInDown  animated" data-animation="fadeInDown animated" data-delay=".2s" id="nav-tabContent" style="visibility: visible; animation-name: fadeInDown;">
+                        <div class="tab-pane fade active show" id="one" role="tabpanel" aria-labelledby="nav-home-tab">
+                            <!-- row loop -->
+                           
+                            <!-- row loop -->
+                            <!-- row loop -->
+                           
+                            <!-- row loop -->
+                            <!-- row loop -->
+                            
+                            <!-- row loop -->
+                            <!-- row loop -->
+                            <div class="row mb-30" *ngFor="let dataitem of projets">
+                                <div class="col-lg-2">
+                                    <div class="user">
+                                        <div class="title" *ngFor="let image of dataitem.productImages">
+                                            <img [src]="'data:' + image.type + ';base64,' + image.picByte" alt="{{ image.name }}"/>
+                                            <h5>{{dataitem.technologie}}</h5>
+                                            <p>{{dataitem.domaineExpertise}}</p>
+                                        </div>
+                                        <ul>
+                                            
+                                            <li>{{dataitem.statusProjet}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-10">
+                                    <div class="event-list-content fix">
+                                        <ul data-animation="fadeInUp animated" data-delay=".2s" style="animation-delay: 0.2s;" class="">
+                                            <li><i class="fas fa-map-marker-alt"></i> {{dataitem.place}}</li>
+                                            <li><i class="far fa-clock"></i>Publié  {{dataitem.postDate}} </li>
+                                        </ul>
+                                        <h2>{{dataitem.titre}}</h2>
+                                        <p>{{dataitem.description}}</p>
+                                        <a  class="btn mt-20 mr-10"><i class="far fa-ticket-alt"></i>Update</a>
+                                        <a  class="btn mt-20" (click)="supprimer(dataitem.id)">Delete</a>
+                                        <div class="crical"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- row loop -->
+        
+                        </div>
+                    </div> 
+                </div>
+               
+            </div>
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>  
+</mat-drawer-content>
+</mat-drawer-container>

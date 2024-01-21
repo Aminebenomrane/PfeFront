@@ -1,0 +1,222 @@
+
+
+
+
+
+
+<!DOCTYPE html>
+<!-- Created by CodingLab |www.youtube.com/c/CodingLabYT-->
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <!--<title> Login and Registration Form in HTML & CSS | CodingLab </title>-->
+    <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap"
+  />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <!-- Fontawesome CDN Link -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body> 
+    <!--<img src="../assets/b.png" alt="Logo" class="logo" /> -->
+    <div class="container"> <img src="../assets/img/logo/CY_Tech.png" alt="Logo" class="logo" style="width: 50px; height: 50px;" />
+
+      <input type="checkbox" id="flip" />
+      <div class="cover">
+        <div class="front">
+          <img src="../assets/login2.jpg" alt=""  />
+          <div class="text">
+        <!---    <span class="text-1"
+              >Every new friend is a <br />
+              new adventure</span
+            >
+            <span class="text-2">Let's get connected</span> --> 
+          </div>
+        </div>
+        <div class="back">
+          <img class="backImg" src="../assets/login3.jpg" alt="" />
+          <div class="text">
+           <!---<span class="text-1"
+              >Complete miles of journey <br />
+              with one step</span
+            >
+            <span class="text-2">Let's get started</span>  --> 
+          </div>
+        </div>
+      </div>
+      <div class="forms">
+        <div class="form-content">
+          <div class="login-form">
+            <div class="title">Login</div>
+            <form (ngSubmit)="login()">
+              <div class="input-boxes">
+                <div class="input-box">
+                  <i class="fas fa-envelope"></i>
+                  <input
+                  [(ngModel)]="loginRequest.email"
+                    type="email"
+                    placeholder="Enter your email"
+                    required
+                    id="email"
+                    name="email"
+                  />
+                </div>
+                <div class="input-box">
+                  <i class="fas fa-lock"></i>
+                  <input placeholder="Enter your password"
+                  type="password" id="password" name="password" [(ngModel)]="loginRequest.password" required
+                  />
+                </div>
+                <div class="text"><a>Forgot password?</a></div>
+                <div class="button input-box">
+                  <input type="submit" value="Login" />
+                </div>
+                <div class="text sign-up-text">
+                  Don't have an account? <label for="flip">Sigup now</label>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="signup-form">
+            <div class="title">Signup</div>
+            <form (ngSubmit)="register()">
+              <div class="input-boxes">
+                <div class="input-box">
+                  <i class="fas fa-user"></i>
+                  <input
+                  [(ngModel)]="registerRequest.firstname"
+                    name="firstname"
+                    type="text"
+                    placeholder="Enter your First Name"
+                    required
+                  />
+                </div>
+                <div class="input-box">
+                  <i class="fas fa-user"></i>
+                  <input
+                  [(ngModel)]="registerRequest.lastname"
+                  name="lastname"
+                    type="text"
+                    placeholder="Enter your Last name"
+                    required
+                  />
+                </div>
+                <div class="input-box">
+                  <i class="fas fa-envelope"></i>
+                  <input type="text" 
+                  [(ngModel)]="registerRequest.email"
+                  name="email"
+                  placeholder="Enter your email" required />
+                </div>
+                <div class="input-box">
+                  <i class="fas fa-lock"></i>
+                  <input
+                    type="password"
+                    [(ngModel)]="registerRequest.password"
+                    (ngModelChange)="onPasswordChange(registerRequest.password)"
+                       name="password"
+                    placeholder="Enter your password"
+                    required
+                  />
+                </div>
+
+                <div [ngStyle]="{'color': 'red', 'display': isvalid  ? 'none' : 'block'}">
+                  Password is not strong enough.
+                </div>
+                
+               
+
+                <div class="input-box">
+                <i class='fa fa-phone' style='color: blue'></i>
+
+                  <input
+                  [(ngModel)]="registerRequest.numTel"
+                  name="telephone"
+                  placeholder="Enter your phone" required 
+                    type="number"
+                   
+                    required
+                  />
+                </div>
+               
+                  
+                
+      <br>
+                <div class="input-box">
+                  
+                  
+                    <input type="radio" 
+                           [(ngModel)]="registerRequest.role"
+                           name="radioOption"
+                           value="FREELANCER" required />
+                           Student
+                 
+                
+              
+                    <input type="radio"
+                           [(ngModel)]="registerRequest.role"
+                           name="radioOption"
+                           value="Entreprise" required />
+                           Professeur
+               
+                
+                  <!-- Add more radio options as needed -->
+                
+                </div>
+
+
+                <div class="input-box" *ngIf="registerRequest.role === 'Entreprise'">
+                 
+                  <i class="fa fa-building" aria-hidden="true" style='color: blue'></i>
+
+                  <input
+                    [(ngModel)]="registerRequest.nomEntreprise"
+                    name="nomEntreprise"
+                    placeholder="Nom Entreprise"
+                    type="text"
+                    required
+                  />
+                </div>
+                <div class="input-box" *ngIf="registerRequest.role === 'Entreprise'">
+                 
+                  <i class="fa fa-globe" aria-hidden="true" style='color: blue'></i>
+
+                  <input
+                    [(ngModel)]="registerRequest.siteweb"
+                    name="siteweb"
+                    placeholder="Site Web"
+                    type="text"
+                    required
+                  />
+                </div>
+
+                <div class="input-box">
+                <i class="fa fa-globe" aria-hidden="true"></i>
+                &nbsp; &nbsp; &nbsp; &nbsp;
+                <select class="form-select" aria-label="Default select example" [(ngModel)]="registerRequest.pays" name="pays" required>
+                  <option value="" disabled selected>Select a country</option>
+                  <option *ngFor="let country of countries" [value]="country">{{ country }}</option>
+                </select>
+              </div>
+                
+              
+                <div class="button input-box">
+                  <input type="submit" value="Sumbit" />
+                </div>
+                <div class="text sign-up-text">
+                  Already have an account? <label for="flip">Login now</label>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

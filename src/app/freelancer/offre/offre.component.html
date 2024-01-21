@@ -1,0 +1,125 @@
+<!-- Created by CodingLab |www.youtube.com/CodingLabYT-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.0/css/boxicons.min.css" integrity="sha512-pVCM5+SN2+qwj36KonHToF2p1oIvoU3bsqxphdOIWMYmgr4ZqD3t5DjKvvetKhXGc/ZG5REYTT6ltKfExEei/Q==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.css" integrity="sha256-NAxhqDvtY0l4xn+YVa6WjAcmd94NNfttjNsDmNatFVc=" crossorigin="anonymous" />
+
+
+
+
+<mat-drawer-container>
+    <mat-drawer mode="side" [opened]="sideBarOpen">
+      <!-- <mat-drawer mode="side" opened="true"> -->
+      <app-sidenav></app-sidenav>
+    </mat-drawer>
+    <mat-drawer-content>
+  
+<app-navbar1></app-navbar1>
+ <app-header (toggleSidebarForMe)="sideBarToggler()"></app-header> 
+  <div class="container-fluid page">
+
+
+
+
+
+
+
+    <br>
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <div class="mb-3">
+                    <h5 class="card-title"><span class="text-muted fw-normal ms-2"></span></h5>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex flex-wrap align-items-center justify-content-end gap-2 mb-3">
+                    <div>
+                      
+                    </div>
+                    <div class="col-lg-12 justify-content-end text-right">
+                        <div class="ms-auto float-right">
+                            <i class="fas fa-plus-circle" style="font-size: 38px; color: #e91818; cursor: pointer;" (click)="add()"></i>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="">
+                    <div class="table-responsive">
+                        <table class="table project-list-table table-nowrap align-middle table-borderless">
+                            <thead>
+                            <tr>
+                                <th scope="col" class="ps-4" style="width: 50px;">
+                                    <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck" /><label class="form-check-label" for="contacusercheck"></label></div>
+                                </th>
+                                <th scope="col">Titre</th>
+                                
+                             
+                                <th scope="col">Domaine</th>
+                                <th scope="col">Technologie</th>
+                                <th scope="col">Freelancer</th>
+                                <th scope="col" style="width: 200px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr  *ngFor="let dataitem of offres">
+                           
+                                <th scope="row" class="ps-4">
+                                  <div class="form-check font-size-16"><input type="checkbox" class="form-check-input" id="contacusercheck4" /><label class="form-check-label" for="contacusercheck4"></label>{{dataitem.id}}</div>
+                              </th>
+                              
+                              <td  *ngFor="let image of dataitem.productImagess"><img [src]="'data:' + image.type + ';base64,' + image.picByte" alt="{{ image.name }}" class="avatar-sm rounded-circle me-2" /><a href="#" class="text-body">{{dataitem.description}}</a></td>
+                               
+                            
+                                <td><span class="badge badge-soft-danger mb-0">{{dataitem.domaineExpertise}}</span></td>
+                                <td> <span class="badge badge-soft-primary mb-0">{{dataitem.technologie}}</span></td>
+                                <td> <span class="badge badge-soft-primary mb-0">{{dataitem.freelancer?.firstname}} {{dataitem.freelancer?.lastname}}</span></td>
+                               
+                               
+                               
+                                
+                                  <td>
+                                      <ul class="list-inline mb-0">
+                                          <li class="list-inline-item">
+                                              <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" title="Edit" class="px-2 text-primary" (click)="update(dataitem.id)"><i class="bx bx-pencil font-size-18"></i></a>
+                                          </li>
+                                          <li class="list-inline-item">
+                                              <a href="javascript:void(0);" data-bs-toggle="tooltip" data-bs-placement="top" title="Delete" class="px-2 text-danger" (click)="supprimer(dataitem.id)"><i class="bx bx-trash-alt font-size-18"></i></a>
+                                          </li>
+                                         
+                                      </ul>
+                                  </td>
+                              </tr>
+                              
+                             
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+    
+
+  </div>
+  
+  
+  
+</mat-drawer-content>
+</mat-drawer-container>   

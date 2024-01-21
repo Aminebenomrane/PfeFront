@@ -1,0 +1,116 @@
+ 
+
+
+
+  <div class="dialog-container">
+    <h1>Ajouter une Projet</h1>
+    <form class="form-container" [formGroup]="Reactiveform" (ngSubmit)="getReservFormData()">
+      <!--  <div class="form-field">      <form class="form-container"  #offreForm="ngForm" (ngSubmit)="addProduct(offreForm)">
+            <mat-form-field>
+                <mat-label>Id Offre</mat-label>
+                <input matInput type="number" formControlName="id">
+            </mat-form-field>
+        </div> -->
+        <div class="form-field">
+            <mat-form-field>
+                <mat-label>Description</mat-label>
+                <input matInput type="text" formControlName="description" required>
+            </mat-form-field>
+        </div>
+
+        <div class="form-field">
+            <mat-form-field>
+                <mat-label>Address</mat-label>
+                <input matInput type="text" formControlName="place" required>
+            </mat-form-field>
+        </div>
+
+       
+        <div class="form-field">
+            <mat-form-field>
+                <mat-label>Titre</mat-label>
+                <input matInput type="text" formControlName="titre" required>
+            </mat-form-field>
+        </div>
+        
+        
+        
+        <div class="form-field">
+            <mat-form-field>
+                <mat-label>Budget</mat-label>
+                <input matInput type="number" formControlName="budget" required>
+            </mat-form-field>
+        </div>
+
+        <div class="form-field">
+            <mat-form-field>
+                <mat-label>Durée</mat-label>
+                <input matInput type="number" formControlName="duree" required>
+            </mat-form-field>
+        </div>
+        
+
+        <div class="form-field">
+            <mat-form-field>
+                <mat-label>Nombre de postes</mat-label>
+                <input matInput type="number" formControlName="nombreDePostesVacants" required>
+            </mat-form-field>
+        </div>
+        
+        <div class="form-field">
+            <mat-form-field>
+                <mat-label>Domaine d'Expertise</mat-label>
+                <mat-select formControlName="domaineExpertise" required>
+                    <mat-option *ngFor="let option of domaineExpertiseOptions" [value]="option">
+                        {{ option }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+
+        <div class="form-field">
+            <mat-form-field>
+                <mat-label>Technologie</mat-label>
+                <mat-select formControlName="technologie" required>
+                    <mat-option *ngFor="let option of technologieOptions" [value]="option">
+                        {{ option }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-field">
+            <mat-form-field>
+                <mat-label>Experience</mat-label>
+                <mat-select formControlName="experience" required>
+                    <mat-option *ngFor="let option of experienceOptions" [value]="option">
+                        {{ option }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-field">
+            <mat-form-field>
+                <mat-label>Nature de travail</mat-label>
+                <mat-select formControlName="natureDuTravail" required>
+                    <mat-option *ngFor="let option of naturedetravailOptions" [value]="option">
+                        {{ option }}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="form-field">
+            <mat-label></mat-label>
+            <input type="file" (change)=" onFileSelectedd($event)" accept="image/*">
+        </div>
+        
+        <!-- Add other form fields based on your Offre interface -->
+
+        <div class="dialog-actions">
+            <button type="button" class="btn-cancel" (click)="dialogRef.close()">Fermer</button>
+            <button mat-raised-button color="primary" type="submit" class="btn-submit" *ngIf="editmode">Modifier</button>
+            <button mat-raised-button color="primary" type="submit" class="btn-submit" *ngIf="!editmode">Enregistrer</button>
+        </div>
+    </form>
+</div> 
+     
+       
